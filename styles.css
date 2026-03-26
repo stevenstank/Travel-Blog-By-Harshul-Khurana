@@ -1,51 +1,204 @@
+:root {
+    --bg: #fff8f0;
+    --bg-accent: #ffe6c7;
+    --surface: rgba(255, 255, 255, 0.76);
+    --surface-strong: #fffdf9;
+    --text: #2d1f1a;
+    --muted: #70564c;
+    --accent: #ea6b2d;
+    --accent-deep: #b53f1c;
+    --accent-soft: #ffd6b8;
+    --sage: #c9dfc1;
+    --shadow: 0 20px 50px rgba(113, 58, 22, 0.14);
+    --radius: 24px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Manrope", sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(234, 107, 45, 0.22), transparent 28%),
+        radial-gradient(circle at top right, rgba(201, 223, 193, 0.6), transparent 26%),
+        linear-gradient(180deg, #fff4e8 0%, var(--bg) 42%, #fffdf9 100%);
+    line-height: 1.7;
 }
 
 header {
-    background-color: #222;
-    color: white;
+    position: relative;
+    overflow: hidden;
     text-align: center;
-    padding: 20px;
+    padding: 88px 20px 72px;
+    color: #fff8f2;
+    background:
+        linear-gradient(135deg, rgba(34, 20, 16, 0.84), rgba(121, 47, 21, 0.68)),
+        url("images/park.jpeg") center/cover;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 110px;
+    background: linear-gradient(180deg, transparent, rgba(255, 248, 240, 0.95));
+}
+
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: #ffd9bf;
+}
+
+h1,
+h2 {
+    font-family: "DM Serif Display", serif;
+    line-height: 1.1;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+}
+
+.subtitle {
+    max-width: 700px;
+    margin: 18px auto 0;
+    font-size: 1.08rem;
+    color: rgba(255, 244, 235, 0.9);
+}
+
+.author {
+    margin: 20px 0 0;
+    font-weight: 700;
+    color: #ffe8d6;
 }
 
 main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 980px;
+    margin: -32px auto 0;
+    padding: 0 20px 48px;
 }
 
-.blog-section {
-    background: white;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 5px;
+.intro,
+.blog-section,
+.final {
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin: 22px 0;
+}
+
+.intro {
+    background:
+        linear-gradient(135deg, rgba(255, 237, 216, 0.95), rgba(255, 255, 255, 0.85));
+}
+
+.blog-section:nth-of-type(2) {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(232, 244, 226, 0.92));
+}
+
+.blog-section:nth-of-type(3) {
+    background:
+        linear-gradient(135deg, rgba(255, 247, 239, 0.94), rgba(255, 228, 205, 0.88));
+}
+
+.final {
+    background:
+        linear-gradient(135deg, rgba(255, 240, 223, 0.98), rgba(255, 255, 255, 0.86));
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--accent-deep);
+}
+
+p {
+    margin: 0 0 14px;
+}
+
+.highlight,
+.rating {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-soft), #fff0da);
+    color: var(--accent-deep);
+}
+
+ul {
+    margin: 16px 0 0;
+    padding-left: 22px;
+}
+
+li::marker {
+    color: var(--accent);
 }
 
 .image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 22px;
 }
 
 .image-grid img {
     width: 100%;
-    max-width: 220px;
-    height: 150px;
+    min-height: 220px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.72);
+    box-shadow: 0 16px 30px rgba(104, 55, 21, 0.16);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-ul {
-    margin-top: 10px;
+.image-grid img:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 24px 36px rgba(104, 55, 21, 0.22);
 }
 
 footer {
-    background-color: #222;
-    color: white;
     text-align: center;
-    padding: 10px;
+    padding: 26px 20px 34px;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    header {
+        padding: 72px 18px 62px;
+    }
+
+    main {
+        padding: 0 14px 36px;
+    }
+
+    .intro,
+    .blog-section,
+    .final {
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .image-grid img {
+        min-height: 180px;
+    }
 }
